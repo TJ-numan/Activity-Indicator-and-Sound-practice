@@ -10,11 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var elapsed = 1.5
     override func viewDidLoad() {
+        activityIndicator.startAnimating()
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let delay = max(0.0, 5.0)
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.performSegue(withIdentifier: "LoginViewController", sender: self)
+         }
+        
+       
+        
     }
 
 
+  
+    
 }
 
